@@ -1,19 +1,11 @@
 // TASK 1: CAR RENTAL SYSTEM CLASS
 class CarRental {
-  constructor(customerName, carModel, rentPerDay, totalDays, pickupDetails) {
+  constructor(customerName, carModel, rentPerDay, totalDays, year, month, date, hours, minutes, seconds) {
     this.customerName = customerName;
     this.carModel = carModel;
     this.rentPerDay = rentPerDay;
     this.totalDays = totalDays;
-
-    // Create & Configure Pickup Date
-    this.pickupDate = new Date();
-    this.pickupDate.setFullYear(pickupDetails.year);
-    this.pickupDate.setMonth(pickupDetails.month); // 0-based index (10 = November)
-    this.pickupDate.setDate(pickupDetails.date);
-    this.pickupDate.setHours(pickupDetails.hours);
-    this.pickupDate.setMinutes(pickupDetails.minutes);
-    this.pickupDate.setSeconds(pickupDetails.seconds);
+    this.pickupDate = new Date(year, month, date, hours, minutes, seconds);
   }
 
   calculateTotalRent() {
@@ -21,21 +13,20 @@ class CarRental {
   }
 
   displayRentalDetails() {
-    console.log("Customer Name : " + this.customerName);
-    console.log("Car Model : " + this.carModel);
-    console.log("Rent Per Day : " + this.rentPerDay);
-    console.log("Total Days : " + this.totalDays);
-    console.log("Total Rent Amount : " + this.calculateTotalRent());
+    console.log(`Customer Name : ${this.customerName}`);
+    console.log(`Car Model : ${this.carModel}`);
+    console.log(`Rent Per Day : ${this.rentPerDay}`);
+    console.log(`Total Days : ${this.totalDays}`);
+    console.log(`Total Rent Amount : ${this.calculateTotalRent()}`);
 
-    // Display Date Extraction Methods
-    console.log("Pickup Year : " + this.pickupDate.getFullYear());
-    console.log("Pickup Month : " + (this.pickupDate.getMonth() + 1)); // 1-indexed month
-    console.log("Pickup Date : " + this.pickupDate.getDate());
-    console.log("Pickup Day : " + this.pickupDate.getDay());
+    console.log(`Pickup Year : ${this.pickupDate.getFullYear()}`);
+    console.log(`Pickup Month : ${this.pickupDate.getMonth() + 1}`); 
+    console.log(`Pickup Date : ${this.pickupDate.getDate()}`);
+    console.log(`Pickup Day : ${this.pickupDate.getDay()}`);
 
-    console.log("Pickup Hours : " + this.pickupDate.getHours());
-    console.log("Pickup Minutes : " + this.pickupDate.getMinutes());
-    console.log("Pickup Seconds : " + this.pickupDate.getSeconds());
+    console.log(`Pickup Hours : ${this.pickupDate.getHours()}`);
+    console.log(`Pickup Minutes : ${this.pickupDate.getMinutes()}`);
+    console.log(`Pickup Seconds : ${this.pickupDate.getSeconds()}`);
 
     console.log("Car Rental Confirmed\n");
   }
@@ -43,65 +34,43 @@ class CarRental {
 
 // TASK 2: GYM SUBSCRIPTION SYSTEM CLASS
 class GymSubscription {
-  constructor(memberName, planName, monthlyFee, totalMonths, joiningDetails) {
+  constructor(memberName, planName, monthlyFee, totalMonths, year, month, date, hours, minutes, seconds) {
     this.memberName = memberName;
     this.planName = planName;
     this.monthlyFee = monthlyFee;
     this.totalMonths = totalMonths;
 
-    // Create & Configure Joining Date
-    this.joiningDate = new Date();
-    this.joiningDate.setFullYear(joiningDetails.year);
-    this.joiningDate.setMonth(joiningDetails.month); // 0-based index (0 = January)
-    this.joiningDate.setDate(joiningDetails.date);
-    this.joiningDate.setHours(joiningDetails.hours);
-    this.joiningDate.setMinutes(joiningDetails.minutes);
-    this.joiningDate.setSeconds(joiningDetails.seconds);
+    this.joiningDate = new Date(year, month, date, hours, minutes, seconds);
   }
 
-  calculateTotalSubscriptionFee() {
+  calculateTotalFee() {
     return this.monthlyFee * this.totalMonths;
   }
 
   displaySubscriptionDetails() {
-    console.log("Member Name : " + this.memberName);
-    console.log("Plan Name : " + this.planName);
-    console.log("Monthly Fee : " + this.monthlyFee);
-    console.log("Total Months : " + this.totalMonths);
-    console.log("Total Subscription Fee : " + this.calculateTotalSubscriptionFee());
+    console.log(`Member Name : ${this.memberName}`);
+    console.log(`Plan Name : ${this.planName}`);
+    console.log(`Monthly Fee : ${this.monthlyFee}`);
+    console.log(`Total Months : ${this.totalMonths}`);
+    console.log(`Total Subscription Fee : ${this.calculateTotalFee()}`);
 
-    // Display Date Extraction Methods
-    console.log("Joining Year : " + this.joiningDate.getFullYear());
-    console.log("Joining Month : " + (this.joiningDate.getMonth() + 1)); // 1-indexed month
-    console.log("Joining Date : " + this.joiningDate.getDate());
-    console.log("Joining Day : " + this.joiningDate.getDay());
+    console.log(`Joining Year : ${this.joiningDate.getFullYear()}`);
+    console.log(`Joining Month : ${this.joiningDate.getMonth() + 1}`);
+    console.log(`Joining Date : ${this.joiningDate.getDate()}`);
+    console.log(`Joining Day : ${this.joiningDate.getDay()}`);
 
-    console.log("Joining Hours : " + this.joiningDate.getHours());
-    console.log("Joining Minutes : " + this.joiningDate.getMinutes());
-    console.log("Joining Seconds : " + this.joiningDate.getSeconds());
+    console.log(`Joining Hours : ${this.joiningDate.getHours()}`);
+    console.log(`Joining Minutes : ${this.joiningDate.getMinutes()}`);
+    console.log(`Joining Seconds : ${this.joiningDate.getSeconds()}`);
 
     console.log("Gym Membership Activated\n");
   }
 }
 
-const rentalOrder = new CarRental("Apshar khan", "Baleno", 1500, 3, {
-  year: 2026,
-  month: 10,
-  date: 12,
-  hours: 9,
-  minutes: 15,
-  seconds: 0
-});
+// EXECUTION
 
+const rentalOrder = new CarRental("Apshar khan", "Baleno", 1500, 3, 2026, 10, 12, 9, 15, 0);
 rentalOrder.displayRentalDetails();
 
-const gymMember = new GymSubscription("Apshar khan", "Annual Premium", 1200, 12, {
-  year: 2026,
-  month: 0,
-  date: 5,
-  hours: 17,
-  minutes: 0,
-  seconds: 0
-});
-
+const gymMember = new GymSubscription("Apshar khan", "Annual Premium", 1200, 12, 2026, 0, 5, 17, 0, 0);
 gymMember.displaySubscriptionDetails();
