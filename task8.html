@@ -1,0 +1,311 @@
+<!-- 
+//Task 1:Product Cards
+<div id="container"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.querySelector("#container");
+
+    data.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}" width="100">
+        <h3>${product.title}</h3>
+        <p>Category: ${product.category}</p>
+        <p>Price: $${product.price}</p>
+        <p>Rating: ${product.rating.rate}</p>
+      `;
+
+      container.append(card);
+    });
+  });
+</script>
+
+
+
+// Task 2 ::Product Description:
+
+<div id="product-list"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(products => {
+    const list = document.querySelector("#product-list");
+
+    products.forEach(item => {
+      const div = document.createElement("div");
+      const shortDesc = item.description.slice(0, 50);
+
+      div.innerHTML = `
+        <p><strong>Title:</strong> ${item.title}</p>
+        <p><strong>Description:</strong> ${shortDesc}...</p>
+        <p><strong>Price:</strong> $${item.price}</p>
+        <hr>
+      `;
+
+      list.append(div);
+    });
+  });
+</script>
+
+//Taask 3::Product List Inside
+
+<div class="api"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    const apiDiv = document.querySelector(".api");
+
+    data.forEach(item => {
+      const productDiv = document.createElement("div");
+
+      productDiv.innerHTML = `
+        <p>Product: ${item.title}</p>
+        <p>Price: $${item.price}</p>
+        <p>Category: ${item.category}</p>
+        <img src="${item.image}" width="100">
+      `;
+
+      apiDiv.append(productDiv);
+    });
+  });
+</script>
+
+
+//Task 4:Product Image Gallery
+
+<div id="gallery"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    const gallery = document.querySelector("#gallery");
+
+    data.forEach(product => {
+      const img = document.createElement("img");
+      img.src = product.image;
+      img.alt = product.title;
+      img.width = 150;
+
+      gallery.append(img);
+    });
+  });
+</script>
+
+
+//Task 5 :Category Display
+
+<div id="categories"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(products => {
+    const container = document.querySelector("#categories");
+
+    products.forEach(c => {
+      const item = document.createElement("div");
+
+      item.innerHTML = `
+        <p>Title: ${c.title}</p>
+        <p>Category: ${c.category}</p>
+        <p>Price: $${c.price}</p>
+        <hr>
+      `;
+
+      container.append(item);
+    });
+  });
+</script>
+
+
+//Task 6:Product Details Card
+
+<div id="card-container"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(products => {
+    const container = document.querySelector("#card-container");
+
+    products.forEach(c => {
+      const card = document.createElement("div");
+
+      card.innerHTML = `
+        -----------------------------
+        <h3>${c.title}</h3>
+        <img src="${c.image}" width="120">
+        <p><strong>Description:</strong> ${c.description}</p>
+        <p><strong>Category:</strong> ${c.category}</p>
+        <p><strong>Price:</strong> $${c.price}</p>
+        <p><strong>Rating:</strong> ${c.rating.rate}</p>
+        -----------------------------
+      `;
+
+      container.append(card);
+    });
+  });
+</script>
+
+
+//Task 7: Rating Details
+
+<div id="ratings"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(response => response.json())
+  .then(data => {
+    const display = document.querySelector("#ratings");
+
+    data.forEach(c => {
+      const row = document.createElement("div");
+
+      row.innerHTML = `
+        <p>Product: ${c.title}</p>
+        <p>Rating: ${c.rating.rate}</p>
+        <p>Reviews: ${c.rating.count}</p>
+        <hr>
+      `;
+
+      display.append(row);
+    });
+  });
+</script>
+
+
+//Task 8:: First 20 Characters
+<div id="short-descriptions"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    const box = document.querySelector("#short-descriptions");
+
+    data.forEach(item => {
+      const card = document.createElement("div");
+
+      card.innerHTML = `
+        <p>Title: ${item.title}</p>
+        <p>Description: ${item.description.slice(0, 20)}...</p>
+        <hr>
+      `;
+
+      box.append(card);
+    });
+  });
+</script>
+
+//Task 9: Change Button Content
+
+<div id="shop"></div>
+
+<script>
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    const shop = document.querySelector("#shop");
+
+    data.forEach(product => {
+      const card = document.createElement("div");
+
+      card.innerHTML = `
+        <h3>${product.title}</h3>
+        <img src="${product.image}" width="80">
+        <button>Buy for $${product.price}</button>
+      `;
+
+      shop.append(card);
+    });
+  });
+</script> -->
+
+<!-- Task 10 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complete Product Cards</title>
+  <style>
+    /* CSS Grid added to the container */
+    #main-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
+
+    .card button {
+      cursor: pointer;
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main-container"></div>
+
+  <script>
+    fetch("https://fakestoreapi.com/products")
+      .then(response => response.json())
+      .then(products => {
+        const mainContainer = document.querySelector("#main-container");
+
+        products.forEach(c => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            <img src="${c.image}" alt="${c.title}">
+            <h3>Title: ${c.title}</h3>
+            <p><strong>Category:</strong> ${c.category}</p>
+            <p><strong>Description:</strong><br>${c.description}</p>
+            <p><strong>Price:</strong> $${c.price}</p>
+            <p><strong>Rating:</strong> ${c.rating.rate}</p>
+            <p><strong>Reviews:</strong> ${c.rating.count}</p>
+            <button>BUY NOW</button>
+          `;
+
+          mainContainer.append(card);
+        });
+      });
+  </script>
+
+</body>
+</html>
